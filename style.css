@@ -1,0 +1,21 @@
+﻿body
+{
+}
+
+.grid {
+    display: grid;
+    gap: 5px;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+}
+
+.tile:nth-child(2n+1) {
+    background-color: #808080ff;
+}
+
+.tile:nth-child(2n) {
+    background-color: #ffffff;
+}
