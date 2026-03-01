@@ -4,6 +4,18 @@ const board = [];
 let player1Count;
 let player2Count;
 
+const disp = document.getElementById('displayTurn');
+
+function updateDisp() {
+        disp.classList.remove('player1', 'player2');
+    if (player === 1) {
+        disp.classList.add('player1');
+    }
+    else {
+        disp.classList.add('player2');
+    }
+}
+
 function makeGrid(size) {
     player1Count = 3;
     player2Count = 3;
@@ -44,6 +56,8 @@ function makeGrid(size) {
         board[row][col] = tile;
         grid.appendChild(tile);
     }
+
+    updateDisp();
 }
 
 function markTerritory(row, col, player) {
@@ -99,6 +113,8 @@ function tileClicked(event) {
     if (player1Count <= 0 || player2Count <= 0) {
         gameOver();
     }
+
+    updateDisp();
 }
 
 function isOwned(tile) {
