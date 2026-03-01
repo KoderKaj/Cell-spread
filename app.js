@@ -22,7 +22,14 @@ function makeGrid(size) {
 
         tile.dataset.row = row;
         tile.dataset.col = col;
-        if ((row + col) % 2 === 0) {
+        const startCol = ((size - 1) / 2 - 1) <= col && col <= ((size - 1) / 2 + 1);
+        if (row === 0 && startCol) {
+            tile.classList.add('player2-territory');
+        }
+        else if (row === size - 1 && startCol) {
+            tile.classList.add('player1-territory');
+        }
+        else if ((row + col) % 2 === 0) {
             tile.classList.add('odd');
         }
         else {
