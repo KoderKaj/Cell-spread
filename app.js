@@ -5,8 +5,7 @@ let player1Count = 3;
 let player2Count = 3;
 
 function makeGrid(size) {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = '';
+    const grid = clearGrid();
 
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -48,7 +47,7 @@ function markTerritory(row, col, player) {
         for (let j = -1; j < 2; j++) {
             try {
                 const tile = board[row + i][col + j];
-                if (!isOwned(tile)) {
+                if (!isOwned(tile) && !tile.classList.contains(player + '-territory')) {
                     tile.classList.add(player + '-territory');
                     if (player === 'player1') {
                         player1Count += 1;
@@ -94,12 +93,33 @@ function tileClicked(event) {
     player *= -1;
 
     if (player1Count <= 0 || player2Count <= 0) {
-        //gameOver)
+        gameOver();
     }
 }
 
 function isOwned(tile) {
     return tile.classList.contains('player1') || tile.classList.contains('player2');
+}
+
+function gameOver() {
+    const grid = clearGrid();
+    let winner;
+    if (player1Count <= 0) {
+        winner = 'Player 2';
+    }
+    else {
+        winner = 'Player 1';
+    }
+
+    const text = document.createElement('div');
+    text.textContent = winner + ' wins !';
+    grid.appendChild(text);
+}
+
+function clearGrid() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = '';
+    return grid;
 }
 
 //makeGrid(10);
