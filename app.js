@@ -60,6 +60,9 @@ function tileClicked(event) {
     if (tile.classList.contains('player1') || tile.classList.contains('player2')) {
         return;
     }
+    if (!tile.classList.contains('player' + (player*-0.5+1.5) + '-territory')) {
+        return;
+    }
 
     const row = parseInt(tile.dataset.row);
     const col = parseInt(tile.dataset.col);
