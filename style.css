@@ -2,6 +2,10 @@
 {
 }
 
+.controls {
+    display: flex;
+}
+
 .grid {
     display: grid;
     width: 500px;

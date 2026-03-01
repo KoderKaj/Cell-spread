@@ -1,10 +1,27 @@
 // JavaScript source code
 let player = 1;
 const board = [];
+let player1Count;
+let player2Count;
+
+const disp = document.getElementById('displayTurn');
+
+function updateDisp() {
+        disp.classList.remove('player1', 'player2');
+    if (player === 1) {
+        disp.classList.add('player1');
+    }
+    else {
+        disp.classList.add('player2');
+    }
+}
 
 function makeGrid(size) {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = '';
+    player1Count = 3;
+    player2Count = 3;
+
+
+    const grid = clearGrid();
 
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -39,6 +56,8 @@ function makeGrid(size) {
         board[row][col] = tile;
         grid.appendChild(tile);
     }
+
+    updateDisp();
 }
 
 function markTerritory(row, col, player) {
@@ -46,8 +65,14 @@ function markTerritory(row, col, player) {
         for (let j = -1; j < 2; j++) {
             try {
                 const tile = board[row + i][col + j];
-                if (!isOwned(tile)) {
+                if (!isOwned(tile) && !tile.classList.contains(player + '-territory')) {
                     tile.classList.add(player + '-territory');
+                    if (player === 'player1') {
+                        player1Count += 1;
+                    }
+                    else {
+                        player2Count += 1;
+                    }
                 }
             }
             catch { }
@@ -69,17 +94,52 @@ function tileClicked(event) {
 
     if (player === 1) {
         tile.classList.add('player1');
+        player1Count -= 1;
         markTerritory(row, col, 'player1');
+        if (tile.classList.contains('player2-territory')) {
+            player2Count -= 1;
+        }
     }
     else {
         tile.classList.add('player2');
+        player2Count -= 1;
         markTerritory(row, col, 'player2');
+        if (tile.classList.contains('player1-territory')) {
+            player1Count -= 1;
+        }
     }
     player *= -1;
+
+    if (player1Count <= 0 || player2Count <= 0) {
+        gameOver();
+    }
+
+    updateDisp();
 }
 
 function isOwned(tile) {
     return tile.classList.contains('player1') || tile.classList.contains('player2');
+}
+
+function gameOver() {
+    const grid = clearGrid();
+    let winner;
+    if (player1Count <= 0) {
+        winner = 'Player 2';
+    }
+    else {
+        winner = 'Player 1';
+    }
+
+    const text = document.createElement('div');
+    text.textContent = winner + ' wins !';
+    grid.appendChild(text);
+}
+
+function clearGrid() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = '';
+    return grid;
 }
 
 //makeGrid(10);
