@@ -1,10 +1,14 @@
 // JavaScript source code
 let player = 1;
 const board = [];
-let player1Count = 3;
-let player2Count = 3;
+let player1Count;
+let player2Count;
 
 function makeGrid(size) {
+    player1Count = 3;
+    player2Count = 3;
+
+
     const grid = clearGrid();
 
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
