@@ -4,8 +4,8 @@ function makeGrid(size) {
     const grid = document.getElementById("grid");
     grid.innerHTML = '';
 
-    grid.style.gridTemplateColumns = `repeat(${size}, 100px)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 100px)`;
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
     for (let i = 0; i < size * size; i++) {
         const tile = document.createElement('div');
@@ -14,6 +14,7 @@ function makeGrid(size) {
 
         const row = Math.floor(i / size);
         const col = i % size;
+
 
         if ((row + col) % 2 === 0) {
             tile.classList.add('odd');
