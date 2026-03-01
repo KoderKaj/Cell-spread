@@ -15,6 +15,8 @@ function makeGrid(size) {
         const row = Math.floor(i / size);
         const col = i % size;
 
+        tile.dataset.row = row;
+        tile.dataset.col = col;
 
         if ((row + col) % 2 === 0) {
             tile.classList.add('odd');
@@ -29,6 +31,13 @@ function makeGrid(size) {
 
 function tileClicked(event) {
     const tile = event.target;
+    if (tile.classList.contains('player1') || tile.classList.contains('player2')) {
+        return;
+    }
+
+    const row = parseInt(tile.dataset.row);
+    const col = parseInt(tile.dataset.col);
+
     if (player === 1) {
         tile.classList.add('player1');
     }
