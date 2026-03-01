@@ -3,10 +3,17 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Testing</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div>
+    <div class="grid" id="grid">
     </div>
+
+    <label for="grid-size">Enter grid size (e.g., 5 for 5x5): </label>
+    <input type="number" id="grid-size" value="5" min="1" max="20" />
+    <button onclick="makeGrid(document.getElementById('grid-size').value)">Generate Grid</button>
+
+    <script src="app.js"></script>
 </body>
 </html>

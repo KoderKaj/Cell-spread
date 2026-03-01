@@ -1,0 +1,28 @@
+﻿body
+{
+}
+
+.grid {
+    display: grid;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+}
+
+.tile.odd {
+    background-color: #808080ff;
+}
+
+.tile.even {
+    background-color: #ffffff;
+}
+
+.tile.player1 {
+    background-color: #00ff21;
+}
+
+.tile.player2 {
+    background-color: #ff0000;
+}
