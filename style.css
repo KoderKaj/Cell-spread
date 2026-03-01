@@ -27,6 +27,10 @@
     background-color: #ff006e;
 }
 
+.player1-territory.player2-territory {
+    background-color: #b200ff;
+}
+
 .tile.player1 {
     background-color: #4800ff;
 }
@@ -35,9 +39,6 @@
     background-color: #ff0000;
 }
 
-.tile.player1-territory.player2-territory {
-    background-color: #b200ff;
-}
 
 
 
