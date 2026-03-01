@@ -1,6 +1,8 @@
 // JavaScript source code
 let player = 1;
 const board = [];
+let player1Count = 3;
+let player2Count = 3;
 
 function makeGrid(size) {
     const grid = document.getElementById("grid");
@@ -48,6 +50,12 @@ function markTerritory(row, col, player) {
                 const tile = board[row + i][col + j];
                 if (!isOwned(tile)) {
                     tile.classList.add(player + '-territory');
+                    if (player === 'player1') {
+                        player1Count += 1;
+                    }
+                    else {
+                        player2Count += 1;
+                    }
                 }
             }
             catch { }
@@ -69,13 +77,25 @@ function tileClicked(event) {
 
     if (player === 1) {
         tile.classList.add('player1');
+        player1Count -= 1;
         markTerritory(row, col, 'player1');
+        if (tile.classList.contains('player2-territory')) {
+            player2Count -= 1;
+        }
     }
     else {
         tile.classList.add('player2');
+        player2Count -= 1;
         markTerritory(row, col, 'player2');
+        if (tile.classList.contains('player1-territory')) {
+            player1Count -= 1;
+        }
     }
     player *= -1;
+
+    if (player1Count <= 0 || player2Count <= 0) {
+        //gameOver)
+    }
 }
 
 function isOwned(tile) {
