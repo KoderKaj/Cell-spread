@@ -1,4 +1,5 @@
 // JavaScript source code
+let player = 1;
 function makeGrid(size) {
     const grid = document.getElementById("grid");
     grid.innerHTML = '';
@@ -9,6 +10,7 @@ function makeGrid(size) {
     for (let i = 0; i < size * size; i++) {
         const tile = document.createElement('div');
         tile.classList.add('tile');
+        tile.addEventListener('click', tileClicked);
 
         const row = Math.floor(i / size);
         const col = i % size;
@@ -22,6 +24,17 @@ function makeGrid(size) {
 
         grid.appendChild(tile);
     }
+}
+
+function tileClicked(event) {
+    const tile = event.target;
+    if (player === 1) {
+        tile.classList.add('player1');
+    }
+    else {
+        tile.classList.add('player2');
+    }
+    player *= -1;
 }
 
 //makeGrid(10);

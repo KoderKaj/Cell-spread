@@ -18,3 +18,11 @@
 .tile.even {
     background-color: #ffffff;
 }
+
+.tile.player1 {
+    background-color: #00ff21;
+}
+
+.tile.player2 {
+    background-color: #ff0000;
+}
