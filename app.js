@@ -9,6 +9,17 @@ function makeGrid(size) {
     for (let i = 0; i < size * size; i++) {
         const tile = document.createElement('div');
         tile.classList.add('tile');
+
+        const row = Math.floor(i / size);
+        const col = i % size;
+
+        if ((row + col) % 2 === 0) {
+            tile.classList.add('odd');
+        }
+        else {
+            tile.classList.add('even');
+        }
+
         grid.appendChild(tile);
     }
 }

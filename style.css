@@ -4,7 +4,6 @@
 
 .grid {
     display: grid;
-    gap: 5px;
 }
 
 .tile {
@@ -12,10 +11,10 @@
     height: 100px;
 }
 
-.tile:nth-child(2n+1) {
+.tile.odd {
     background-color: #808080ff;
 }
 
-.tile:nth-child(2n) {
+.tile.even {
     background-color: #ffffff;
 }
