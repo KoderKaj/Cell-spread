@@ -4,11 +4,11 @@
 
 .grid {
     display: grid;
+    width: 500px;
+    height: 500px;
 }
 
 .tile {
-    width: 100px;
-    height: 100px;
 }
 
 .tile.odd {
@@ -19,6 +19,14 @@
     background-color: #ffffff;
 }
 
+.tile.player1-territory {
+    background-color: #b6ff00;
+}
+
+.tile.player2-territory {
+    background-color: #ff006e;
+}
+
 .tile.player1 {
     background-color: #00ff21;
 }
@@ -26,3 +34,6 @@
 .tile.player2 {
     background-color: #ff0000;
 }
+
+
+

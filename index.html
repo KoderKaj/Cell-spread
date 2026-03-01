@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <div class="controls">
+        <button onclick="makeGrid(5)">Small</button>
+        <button onclick="makeGrid(11)">Medium</button>
+        <button onclick="makeGrid(25)">Large</button>
+    </div>
+
     <div class="grid" id="grid">
     </div>
 
-    <label for="grid-size">Enter grid size (e.g., 5 for 5x5): </label>
+    <!--<label for="grid-size">Enter grid size (e.g., 5 for 5x5): </label>
     <input type="number" id="grid-size" value="5" min="1" max="20" />
-    <button onclick="makeGrid(document.getElementById('grid-size').value)">Generate Grid</button>
+    <button onclick="makeGrid(document.getElementById('grid-size').value)">Generate Grid</button>-->
 
     <script src="app.js"></script>
 </body>
