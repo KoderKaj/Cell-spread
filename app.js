@@ -17,12 +17,12 @@ let history = ''; //Debug
 const disp = document.getElementById('displayTurn');
 
 function updateDisp() {
-        disp.classList.remove('player1', 'player2');
+    disp.classList.remove('player1-territory', 'player2-territory');
     if (player === 1) {
-        disp.classList.add('player1');
+        disp.classList.add('player1-territory');
     }
     else {
-        disp.classList.add('player2');
+        disp.classList.add('player2-territory');
     }
 }
 
