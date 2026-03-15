@@ -132,7 +132,7 @@ function tileClicked(event) {
     }
 
     updateDisp();
-    console.log('player1Count:' + player1Count + ', player2Count:' + player2Count); //Debug
+    console.debug('player1Count:' + player1Count + ', player2Count:' + player2Count); //Debug
 }
 
 function isOwned(tile) {
