@@ -7,12 +7,12 @@ let player2Count;
 /*
 syntax: 
 new game - n(size, player) e.g. pressing small = n(5,1)
-player move - player((coords), {newLocations}) e.g player 1 choosing left spawn tile on small map ~ 1:[(4,1),{(4,0),(3,0),(3,1),(3,2)}]
+player move - player((coords){newLocations}) e.g player 1 choosing left spawn tile on small map ~ 1:[(4,1){(4,0)(3,0)(3,1)(3,2)}]
     - order of newLocations may vary depending on how tile territory marking is implemented.
 
 each new string is separated by a comma.
 */
-let history = '';
+let history = ''; //Debug
 
 const disp = document.getElementById('displayTurn');
 
@@ -27,6 +27,7 @@ function updateDisp() {
 }
 
 function makeGrid(size) {
+    history += ',n(' + size + ',' + player + ')'; //Debug
     player1Count = 3;
     player2Count = 3;
 
@@ -76,6 +77,9 @@ function markTerritory(row, col, player) {
             try {
                 const tile = board[row + i][col + j];
                 if (!isOwned(tile) && !tile.classList.contains(player + '-territory')) {
+
+                    history += '(' + (row + i) + ',' + (col + j) + ')'; //Debug
+
                     tile.classList.add(player + '-territory');
                     if (player === 'player1') {
                         player1Count += 1;
@@ -102,6 +106,7 @@ function tileClicked(event) {
     const row = parseInt(tile.dataset.row);
     const col = parseInt(tile.dataset.col);
 
+    history += ',' + player + ':[(' + row + ',' + col + '){'; //Debug
     if (player === 1) {
         tile.classList.add('player1');
         player1Count -= 1;
@@ -118,6 +123,8 @@ function tileClicked(event) {
             player1Count -= 1;
         }
     }
+    history += '}]'; //Debug
+
     player *= -1;
 
     if (player1Count <= 0 || player2Count <= 0) {
