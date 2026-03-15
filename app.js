@@ -4,6 +4,16 @@ const board = [];
 let player1Count;
 let player2Count;
 
+/*
+syntax: 
+new game - n(size, player) e.g. pressing small = n(5,1)
+player move - player((coords), {newLocations}) e.g player 1 choosing left spawn tile on small map ~ 1:[(4,1),{(4,0),(3,0),(3,1),(3,2)}]
+    - order of newLocations may vary depending on how tile territory marking is implemented.
+
+each new string is separated by a comma.
+*/
+let history = '';
+
 const disp = document.getElementById('displayTurn');
 
 function updateDisp() {
@@ -115,7 +125,7 @@ function tileClicked(event) {
     }
 
     updateDisp();
-    console.log('player1Count:' + player1Count + ', player2Count:' + player2Count);
+    console.log('player1Count:' + player1Count + ', player2Count:' + player2Count); //Debug
 }
 
 function isOwned(tile) {
