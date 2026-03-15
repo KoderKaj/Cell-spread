@@ -115,6 +115,7 @@ function tileClicked(event) {
     }
 
     updateDisp();
+    console.log('player1Count:' + player1Count + ', player2Count:' + player2Count);
 }
 
 function isOwned(tile) {
